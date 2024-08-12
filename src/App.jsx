@@ -13,27 +13,28 @@ function App() {
 
   const [todos, setTodos] = useState();
   const [inpAdd, setInpAdd] = useState('');
-  const [checkAll, setCheckAll] = useState(true);
-  const [checkDoned, setCheckDoned] = useState(false);
-  const [active, setActive] = useState(false);
+  const [radioAll, setCheckAll] = useState(true);
+  const [radioDoned, setCheckDoned] = useState(false);
+  const [radioActive, setActive] = useState(false);
   
   const {data, isLoading, refetch} = useQueryTasks();
   const {mutateAsync: addTaskMutateAsync} = useMutationAddTask();
  
  useEffect(() => {
   if (data) {
-    if (checkAll) {
+    if (radioAll) {
       setTodos(data);
-    } else if (checkDoned) {
+    } else if (radioDoned) {
       let copy = data.filter(elem => elem.isdone)
       setTodos(copy);
       refetch();
-    } else if (active ){
+    } else if (radioActive ){
       let copy = data.filter(elem => !elem.isdone)
+      refetch();
       setTodos(copy)
     }
   }
- }, [data, checkAll, checkDoned, active]);
+ }, [data, radioAll, radioDoned, radioActive]);
  
  async function addTask () {
   if (inpAdd) {
@@ -81,11 +82,11 @@ function App() {
                 handleInpAddTaskValue={handleInpAddTaskValue}
                 addTask={addTask} />
 
-        <Radio checkAll={checkAll} 
+        <Radio checkAll={radioAll} 
                 handleCheckAll={handleCheckAll}
-                checkDoned={checkDoned}
+                checkDoned={radioDoned}
                 handleCheckDoned={handleCheckDoned}
-                active={active}
+                active={radioActive}
                 handlActive={handlActive}/>
 
         {/* <Auth /> */}
