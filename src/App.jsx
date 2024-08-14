@@ -66,7 +66,7 @@ function App() {
   setActive(false)
  }
 
- function handlActive() {
+ function handleActive() {
   setCheckDoned(false);
   setCheckAll(false);
   setActive(true)
@@ -87,7 +87,7 @@ function App() {
                 checkDoned={radioDoned}
                 handleCheckDoned={handleCheckDoned}
                 active={radioActive}
-                handlActive={handlActive}/>
+                handlActive={handleActive}/>
 
         {/* <Auth /> */}
         
