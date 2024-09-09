@@ -5,7 +5,6 @@ import TodoList from './components/TodoList';
 import { useMutationAddTask } from './hooks/useMutationAddTask';
 import Title from './components/Title';
 import { AppContainer } from './AppStyled';
-import Auth from './components/Auth';
 import Radio from './components/Radio';
 import AddTask from './components/AddTask';
 
@@ -34,7 +33,7 @@ function App() {
       setTodos(copy)
     }
   }
- }, [data, radioAll, radioDoned, radioActive]);
+ }, [data, radioAll, radioDoned, radioActive, refetch]);
  
  async function addTask () {
   if (inpAdd) {
